@@ -1,0 +1,30 @@
+
+
+CC = gcc
+CFLAGS = -Wall
+
+all: exercise2
+.PHONY : all
+
+exercise2: exercise2.o mystrlen2.o mgetline2.o strend2.o
+	$(CC) $(CFLAGS) -o exercise2 exercise2.o mystrcat2.o mgetline2.o strend2.o
+	
+mystrlen2.o : mystrlen2.c
+	$(CC) $(CFLAGS) -c -o mystrlen2.c mystrlen2.o
+	
+mgetline2.o : mgetline2.c
+	$(CC) $(CFLAGS) -c -o mgetline2.c mgetline2.o
+	
+exercise2.o : exercise2.c
+	$(CC) $(CFLAGS) -c -o exercise2.c exercise2.o
+	
+strend2.o : strend2.c
+	$(CC) $(CFLAGS) -c -o strend2.c strend2.o
+	
+debug: clean exercise2.c mystrlen2.c mgetline2.c strend2.c
+	$(CC) $(CFLAGS) -g -o test exercise2 exercise2.o mystrcat2.o mgetline2.o strend2.o
+	gdb -tui test
+
+.PHONY: clean
+clean:
+	rm -rf *.0   
