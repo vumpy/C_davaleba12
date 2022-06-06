@@ -1,0 +1,30 @@
+
+
+CC = gcc
+CFLAGS = -Wall
+
+all: exercise3
+.PHONY : all
+
+exercise3: exercise3.o mystrncpy3.o mystrncmp3.o mystrncat3.o
+	$(CC) $(CFLAGS) -o exercise3.o mystrncpy3.o mystrncmp3.o mystrncat3.o
+	
+mystrncpy3.o : mystrncpy3.c
+	$(CC) $(CFLAGS) -c -o mystrncpy3.c mystrncpy3.o
+	
+mystrncmp3.o : mystrncmp3.c
+	$(CC) $(CFLAGS) -c -o mystrncmp3.c mystrncmp3.o
+	
+exercise3.o : exercise3.c
+	$(CC) $(CFLAGS) -c -o exercise3.c exercise3.o
+	
+mystrncat3.o : mystrncat3.c
+	$(CC) $(CFLAGS) -c -o mystrncat3.c mystrncat3.o
+	
+debug: clean exercise3.o mystrncpy3.o mystrncmp3.o mystrncat3.o
+	$(CC) $(CFLAGS) -g -o test exercise3 exercise3.o mystrncpy3.o mystrncmp3.o mystrncat3.o
+	gdb -tui test
+
+.PHONY: clean
+clean:
+	rm -rf *.0   
