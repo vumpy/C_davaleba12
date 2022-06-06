@@ -3,8 +3,8 @@
 #include<string.h>
 #include<stdlib.h>
 
-#define NUMBER '0' /* signal that a number was found */
-#define MAXVAL 100 /* maximum depth of val stack */
+#define NUMBER '0' 
+#define MAXVAL 100 
 #define BUFSIZE 100
 #define MAXLINE 1000
 #define MAXOP 100
