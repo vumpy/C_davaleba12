@@ -1,0 +1,21 @@
+
+
+CC = gcc
+CFLAGS = -Wall
+
+all: exercise4
+.PHONY : all
+
+exercise4: exercise4.o 
+	$(CC) $(CFLAGS) -o exercise4.o
+	
+exercise4.o : exercise4.c
+	$(CC) $(CFLAGS) -c -o exercise4.c exercise4.o
+	
+debug: clean exercise4.o 
+	$(CC) $(CFLAGS) -g -o test exercise4
+	gdb -tui test
+
+.PHONY: clean
+clean:
+	rm -rf *.0   
